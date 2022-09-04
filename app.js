@@ -11,7 +11,7 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.dbLink);
+mongoose.connect(process.env.dbLink, { useNewUrlParser: true });
 
 const itemsSchema = {
   name: String,
