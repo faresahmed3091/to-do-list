@@ -11,8 +11,16 @@ app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.dbLink, { useNewUrlParser: true });
+const connectDB = () => {
+  return mongoose
+    .connect(process.env.DBLink)
+    .then((result) => {
+      console.log(`DB connected on ....... ${process.env.dbLink}`);
+    })
+    .catch((err) => console.log("fail to connect DB", err));
+};
 
+connectDB();
 const itemsSchema = {
   name: String,
 };
