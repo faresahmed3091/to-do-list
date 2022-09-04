@@ -10,7 +10,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static("public"));
-
+mongoose.set("useNewUrlParser", true);
 const connectDB = () => {
   return mongoose
     .connect(process.env.DBLink)
